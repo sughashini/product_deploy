@@ -14,6 +14,6 @@ mongoose.connect('mongodb+srv://sughashini30:sugha30@mycluster.vytpl.mongodb.net
 app.use("", productRouter);
 console.log("new update")
 
-// app.get('/', (req, res)=>{
-//     res.send('server reacted...')
-// })
+ app.get('/', (req, res)=>{
+     res.send('server reacted...')
+ })
