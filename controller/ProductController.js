@@ -56,18 +56,19 @@ exports.updateExistProduct = async (req, res)=>{
     }
 }
 
-exports.deleteProduct = async (req, res) =>{
+exports.deleteProduct = async (req, res)=>{
     try{
-        const check = await Product.findOne({proId:req.params.id})
-        if(check){
-            await Product.deleteOne({proId: check.proId})
-            res.json(check)
+        const product = await Product.findOne({proId: req.params.id})
+        if(product){
+            await Product.deleteOne({proId:product.proId})
+            res.json(product)
         }
-        else
-            res.status(404).json({msg: 'Data doesnt exist'})
+        else{
+            res.json({msg: 'product doesnt exists'})
+        }
     }
     catch(err){
-        console.log(err);
+        res.status(500).json({msg: err.message})
     }
 }
 
